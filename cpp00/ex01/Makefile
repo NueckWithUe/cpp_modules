@@ -3,7 +3,8 @@ CPP		=	c++
 CPFLAGS	=	-Wall -Wextra -Werror -std=c++98
 
 SRC		=	main.cpp \
-			PhoneBook.cpp
+			PhoneBook.cpp \
+			Contact.cpp
 
 OBJ		=	$(addprefix obj/, $(SRC:%.cpp=%.o))
 
