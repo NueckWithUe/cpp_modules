@@ -2,12 +2,10 @@
 
 Contact::Contact()
 {
-	std::cout << "Contact constructor called" << std::endl;
 }
 
 Contact::~Contact()
 {
-	std::cout << "Contact destructor called" << std::endl;
 }
 
 std::string Contact::get_first_name()
@@ -22,7 +20,7 @@ std::string Contact::get_nickname()
 {
 	return (nickname);
 }
-int Contact::get_phone_number()
+std::string Contact::get_phone_number()
 {
 	return (phone_number);
 }
@@ -44,7 +42,7 @@ void Contact::set_nickname(std::string input)
 {
 	nickname = input;
 }
-void Contact::set_phone_number(int input)
+void Contact::set_phone_number(std::string input)
 {
 	phone_number = input;
 }
