@@ -9,10 +9,15 @@
 class PhoneBook
 {
 private:
+	Contact	contacts[8];
+	int		index_contact;
 
 public:
 	PhoneBook();
 	~PhoneBook();
+
+	void	addContact();
+	void	displayContact();
 };
 
 #endif
