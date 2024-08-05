@@ -3,6 +3,7 @@
 PhoneBook::PhoneBook()	//constructor
 {
 	index_contact = -1;
+	num_contacts = 0;
 }
 
 PhoneBook::~PhoneBook()	//deconstructor
@@ -16,6 +17,8 @@ void	PhoneBook::addContact()
 	if (index_contact == 7)
 		index_contact = 0;
 	index_contact++;
+	if (num_contacts < 8)
+		num_contacts++;
 	std::cout << "Enter first name: ";
 	std::cin >> input;
 	contacts[index_contact].set_first_name(input);
@@ -35,9 +38,17 @@ void	PhoneBook::addContact()
 
 void	PhoneBook::displayContact()
 {
-	std::cout << contacts[index_contact].get_first_name() << std::endl;
-	std::cout << contacts[index_contact].get_last_name() << std::endl;
-	std::cout << contacts[index_contact].get_nickname() << std::endl;
-	std::cout << contacts[index_contact].get_phone_number() << std::endl;
-	std::cout << contacts[index_contact].get_secret() << std::endl;
+	if (num_contacts == 0)
+	{
+		std::cout << "No contacts to display" << std::endl;
+		return ;
+	}
+	for (int i = 0; i < num_contacts; i++)
+	{
+		std::cout << contacts[i].get_first_name() << std::endl;
+		std::cout << contacts[i].get_last_name() << std::endl;
+		std::cout << contacts[i].get_nickname() << std::endl;
+		std::cout << contacts[i].get_phone_number() << std::endl;
+		std::cout << contacts[i].get_secret() << std::endl;
+	}
 }

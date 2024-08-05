@@ -11,6 +11,7 @@ class PhoneBook
 private:
 	Contact	contacts[8];
 	int		index_contact;
+	int		num_contacts;
 
 public:
 	PhoneBook();
