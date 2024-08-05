@@ -2,10 +2,10 @@
 
 PhoneBook::PhoneBook()	//constructor
 {
-	std::cout << "Constructor called" << std::endl;
+	std::cout << "PhoneBook constructor called" << std::endl;
 }
 
 PhoneBook::~PhoneBook()	//deconstructor
 {
-	std::cout << "Destructor called" << std::endl;
+	std::cout << "PhoneBook destructor called" << std::endl;
 }
