@@ -1,9 +1,8 @@
-NAME	=	Moar Brainz
+NAME	=	ex01
 CPP		=	c++
 CPFLAGS	=	-Wall -Wextra -Werror -std=c++98
 
 SRC		=	main.cpp \
-			newZombie.cpp \
 			zombieHorde.cpp \
 			Zombie.cpp
 
