@@ -14,7 +14,7 @@ int	main(void)
 			if (input == "ADD")
 				book.addContact();
 			else
-				book.displayContact();
+				book.displayTable();
 			std::cout << "Enter one of the following commands: ADD, SEARCH, EXIT: ";
 			std::cin >> input;
 		}

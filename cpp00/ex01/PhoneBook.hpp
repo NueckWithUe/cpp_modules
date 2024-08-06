@@ -17,8 +17,10 @@ public:
 	PhoneBook();
 	~PhoneBook();
 
-	void	addContact();
-	void	displayContact();
+	void		addContact();
+	void		displayContact(int index);
+	void		displayTable();
+	std::string	displayTruncated(std::string input, int width);
 };
 
 #endif
