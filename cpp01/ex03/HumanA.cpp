@@ -1,9 +1,8 @@
 #include "HumanA.hpp"
 
-HumanA::HumanA(std::string initName, Weapon initWeapon)
+HumanA::HumanA(std::string initName, Weapon &initWeapon) : weapon(initWeapon)
 {
 	name = initName;
-	weapon = initWeapon;
 }
 
 HumanA::~HumanA()
