@@ -1,6 +1,23 @@
 #include <iostream>
 #include <fstream>
 
+void replace_1(std::string &line, char **argv, int found)
+{
+	std::string arg_2 = argv[2];
+	std::string arg_3 = argv[3];
+	std::string newString;
+	std::string bufferString;
+	char buffer[1024];
+
+	line.copy(buffer, found, 0);
+	newString = buffer;
+	newString.append(arg_3);
+	line.copy(buffer, line.length(), newString.length());
+	bufferString = buffer;
+	newString.append(bufferString);
+	line = newString;
+}
+
 int	main(int argc, char **argv)
 {
 	std::ifstream inputfile;
@@ -19,14 +36,14 @@ int	main(int argc, char **argv)
 		std::cout << "Error.\nFile cannot be opened." << std::endl;
 		return (1);
 	}
-	std::ofstream outfile (name);
+	std::ofstream outfile(name);
 	while (std::getline(inputfile, lines))
 	{
-		std::cout << lines << std::endl;
 		if ((int)lines.find(argv[2], 0) >= 0)
-			std::cout << argv[2] << " found." << std::endl;
+			replace_1(lines, argv, lines.find(argv[2], 0));
 		outfile << lines << std::endl;
 	}
 	inputfile.close();
+	outfile.close();
 	return (0);
 }
