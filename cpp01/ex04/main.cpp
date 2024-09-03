@@ -12,7 +12,7 @@ void replace(std::string &line, char **argv)
 	line.copy(s, found, 0);
 	new_line.append(s);
 	new_line.append(argv3);
-	new_line.append(line, found + argv3.length(), 1024);
+	new_line.append(line, found + argv2.length(), 1024);
 	line = new_line;
 }
 
