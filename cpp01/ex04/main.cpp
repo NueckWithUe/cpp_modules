@@ -1,21 +1,19 @@
 #include <iostream>
 #include <fstream>
 
-void replace_1(std::string &line, char **argv, int found)
+void replace(std::string &line, char **argv)
 {
-	std::string arg_2 = argv[2];
-	std::string arg_3 = argv[3];
-	std::string newString;
-	std::string bufferString;
-	char buffer[1024];
+	int found = (int)line.find(argv[2], 0);
+	char s[1024];
+	std::string new_line;
+	std::string argv2 = argv[2];
+	std::string argv3 = argv[3];
 
-	line.copy(buffer, found, 0);
-	newString = buffer;
-	newString.append(arg_3);
-	line.copy(buffer, line.length(), newString.length());
-	bufferString = buffer;
-	newString.append(bufferString);
-	line = newString;
+	line.copy(s, found, 0);
+	new_line.append(s);
+	new_line.append(argv3);
+	new_line.append(line, found + argv3.length(), 1024);
+	line = new_line;
 }
 
 int	main(int argc, char **argv)
@@ -39,8 +37,8 @@ int	main(int argc, char **argv)
 	std::ofstream outfile(name);
 	while (std::getline(inputfile, lines))
 	{
-		if ((int)lines.find(argv[2], 0) >= 0)
-			replace_1(lines, argv, lines.find(argv[2], 0));
+		while ((int)lines.find(argv[2], 0) >= 0)
+			replace(lines, argv);
 		outfile << lines << std::endl;
 	}
 	inputfile.close();
