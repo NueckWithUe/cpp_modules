@@ -28,41 +28,19 @@ void	Harl::error( void )
 	std::cout << "This is unacceptable! I want to speak to the manager now." << std::endl;
 }
 
-static int	convert_str_to_num(std::string level)
-{
-	if (level == "DEBUG")
-		return (1);
-	else if (level == "INFO")
-		return (2);
-	else if (level == "WARNING")
-		return (3);
-	else if (level == "ERROR")
-		return (4);
-	return (-1);
-}
-
 void	Harl::complain( std::string level )
 {
-	int	number;
+	void (Harl::*functionPointer)(void);
 
-	number = convert_str_to_num(level);
-	switch (number)
-	{
-	case 1:
-		debug();
-		break;
-	case 2:
-		info();
-		break;
-	case 3:
-		warning();
-		break;
-	case 4:
-		error();
-		break;
-
-	default:
-		std::cout << "Error. Out of scope level." << std::endl;
-		break;
-	}
+	if (level == "INFO")
+		functionPointer = &Harl::info;
+	else if (level == "DEBUG")
+		functionPointer = &Harl::debug;
+	else if (level == "WARNING")
+		functionPointer = &Harl::warning;
+	else if (level == "ERROR")
+		functionPointer = &Harl::error;
+	else
+		return ;
+	(this->*functionPointer)();
 }
