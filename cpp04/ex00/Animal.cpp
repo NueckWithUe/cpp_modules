@@ -17,5 +17,10 @@ Animal::~Animal()
 
 void Animal::makeSound()
 {
-	std::cout << "Superclass Animal cannot make a sound." << std::endl;
+	std::cout << "Animal." << std::endl;
+}
+
+std::string Animal::getType(void)
+{
+	return (type);
 }

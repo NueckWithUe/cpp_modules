@@ -9,14 +9,13 @@ class Animal
 protected:
 	std::string type;
 
-private:
-
 public:
 	Animal();
 	Animal(const Animal& obj);
 	~Animal();
 
-	void makeSound();
+	virtual void makeSound();
+	std::string getType(void);
 };
 
 #endif
