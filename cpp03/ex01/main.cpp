@@ -2,8 +2,11 @@
 
 int main(void)
 {
-	// ClapTrap clap("Clap1");
-	ScavTrap scav("Scav1");
+	ClapTrap clap("CT00");
+	ScavTrap scav("ST00");
 
+	clap.attack("M");
 	scav.beRepaired(20);
+	scav.attack("N");
+	scav.guardGate();
 }
