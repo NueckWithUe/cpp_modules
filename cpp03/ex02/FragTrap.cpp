@@ -15,6 +15,16 @@ FragTrap::FragTrap(const FragTrap& obj) : ClapTrap(obj)
 	std::cout << "FragTrap copy constructor called" << std::endl;
 }
 
+FragTrap& FragTrap::operator=(const FragTrap& obj)
+{
+	std::cout << "FragTrap assignment overload called" << std::endl;
+	if (this != &obj)
+	{
+		ClapTrap::operator=(obj);
+	}
+	return (*this);
+}
+
 FragTrap::~FragTrap()
 {
 	std::cout << "FragTrap destructor called" << std::endl;
