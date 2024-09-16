@@ -8,8 +8,8 @@
 class Fixed
 {
 	private:
-		int	FPNvalue;
-		static const int	fractionalBits = 8;
+		int FPNvalue;
+		static const int fractionalBits = 8;
 
 	public:
 		Fixed();
@@ -17,7 +17,6 @@ class Fixed
 		Fixed(const float);
 		Fixed(const Fixed &obj);
 		Fixed& operator=(const Fixed& obj);
-		Fixed& operator<<(const Fixed& obj);
 		~Fixed();
 
 		int getRawBits( void ) const;
@@ -25,5 +24,7 @@ class Fixed
 		float toFloat( void ) const;
 		int toInt( void ) const;
 };
+
+std::ostream& operator<<(std::ostream& os, const Fixed &obj);
 
 #endif

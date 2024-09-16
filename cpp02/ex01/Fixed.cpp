@@ -9,12 +9,13 @@ Fixed::Fixed(void)
 Fixed::Fixed(const int number)
 {
 	std::cout << "Int constructor called" << std::endl;
-	FPNvalue = number;
+	FPNvalue = number << fractionalBits;
 }
 
 Fixed::Fixed(const float number)
 {
 	std::cout << "Float constructor called" << std::endl;
+	FPNvalue = roundf(number * (1 << fractionalBits));
 }
 
 Fixed::Fixed(const Fixed &obj)
@@ -25,13 +26,16 @@ Fixed::Fixed(const Fixed &obj)
 
 Fixed& Fixed::operator=(const Fixed &obj)
 {
+	std::cout << "Copy assignment constructor called" << std::endl;
 	if (this != &obj)
 		this->FPNvalue = obj.FPNvalue;
 	return *this;
 }
 
-Fixed& Fixed::operator<<(const Fixed &obj)
+std::ostream& operator<<(std::ostream& os, const Fixed &obj)
 {
+	os << obj.toFloat();
+	return (os);
 }
 
 Fixed::~Fixed()
@@ -41,7 +45,6 @@ Fixed::~Fixed()
 
 int Fixed::getRawBits( void ) const
 {
-	std::cout << "getRawBits member funtion called" << std::endl;
 	return (FPNvalue);
 }
 
@@ -52,10 +55,10 @@ void Fixed::setRawBits( int const raw )
 
 float Fixed::toFloat( void ) const
 {
-
+	return ((float)FPNvalue / (float)(1 << fractionalBits));
 }
 
 int Fixed::toInt( void ) const
 {
-
+	return (FPNvalue >> fractionalBits);
 }
