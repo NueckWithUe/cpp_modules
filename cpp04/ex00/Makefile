@@ -5,7 +5,9 @@ CPFLAGS	=	-Wall -Wextra -Werror
 SRC		=	main.cpp \
 			Animal.cpp \
 			Dog.cpp \
-			Cat.cpp
+			Cat.cpp \
+			WrongAnimal.cpp \
+			WrongCat.cpp
 OBJ		=	$(addprefix obj/, $(SRC:%.cpp=%.o))
 
 $(NAME):	$(OBJ)

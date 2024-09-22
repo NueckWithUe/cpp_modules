@@ -12,10 +12,11 @@ protected:
 public:
 	Animal();
 	Animal(const Animal& obj);
-	~Animal();
+	Animal& operator=(const Animal& obj);
+	virtual ~Animal();
 
-	virtual void makeSound();
-	std::string getType(void);
+	virtual void makeSound() const;
+	std::string getType(void) const;
 };
 
 #endif
