@@ -21,3 +21,9 @@ Cure::~Cure()
 {
 	std::cout << "Cure destrutor called" << std::endl;
 }
+
+Cure* Cure::clone() const
+{
+	Cure *newCure = new Cure();
+	return (newCure);
+}

@@ -3,7 +3,6 @@
 AMateria::AMateria()
 {
 	std::cout << "AMateria default constructor called" << std::endl;
-	target = new ICharacter("Name");
 }
 
 AMateria::AMateria(std::string const & type)

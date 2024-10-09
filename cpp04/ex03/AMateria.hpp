@@ -10,8 +10,6 @@ class ICharacter;
 
 class AMateria
 {
-private:
-	ICharacter *target;
 protected:
 	std::string Type;
 public:

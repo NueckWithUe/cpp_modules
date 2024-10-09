@@ -4,7 +4,6 @@ CPFLAGS	=	-Wall -Wextra -Werror
 
 SRC		=	main.cpp \
 			AMateria.cpp \
-			ICharacter.cpp \
 			Cure.cpp \
 			Ice.cpp
 OBJ		=	$(addprefix obj/, $(SRC:%.cpp=%.o))
