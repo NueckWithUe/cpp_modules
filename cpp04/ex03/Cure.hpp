@@ -4,15 +4,17 @@
 
 # include <iostream>
 # include <string>
+# include "AMateria.hpp"
 
-class Cure
+class Cure : public AMateria
 {
-private:
 public:
 	Cure();
 	Cure(const Cure& obj);
 	Cure& operator=(const Cure& obj);
 	~Cure();
+
+	AMateria* clone() const;
 };
 
 #endif
