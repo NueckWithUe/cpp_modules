@@ -7,7 +7,7 @@ int	main(void)
 
 	count = 1;
 	amount = 5;
-	Zombie *horde = zombieHorde(amount, "Zombie");	
+	Zombie *horde = zombieHorde(amount, "Zombie");
 	for (int i = 0; i < amount; i++)
 	{
 		std::cout << count++ << ". Zombie" << std::endl;
