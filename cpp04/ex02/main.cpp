@@ -15,5 +15,6 @@ int main()
 	j->makeSound();
 
 	delete j;
+	delete i;
 	return 0;
 }

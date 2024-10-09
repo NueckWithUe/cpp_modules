@@ -16,7 +16,7 @@ public:
 	Cat& operator=(const Cat& obj);
 	~Cat();
 
-	void makeSound(void) const override;
+	void makeSound(void) const;
 };
 
 #endif
