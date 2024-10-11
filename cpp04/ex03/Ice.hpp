@@ -5,7 +5,9 @@
 # include <iostream>
 # include <string>
 
-class Ice
+# include "AMateria.hpp"
+
+class Ice : public AMateria
 {
 private:
 public:
@@ -13,6 +15,9 @@ public:
 	Ice(const Ice& obj);
 	Ice& operator=(const Ice& obj);
 	~Ice();
+
+	Ice* clone() const;
+	void use(ICharacter& target);
 };
 
 #endif
