@@ -2,19 +2,29 @@
 
 Character::Character()
 {
-	num_equip_materia = 0;
+	_Name = "an unknown person";
+	for (int i = 0; i < 4; i++)
+	{
+		_Inv[i] = NULL;
+	}
 }
 
 Character::Character(std::string name)
 {
 	_Name = name;
-	num_equip_materia = 0;
+	for (int i = 0; i < 4; i++)
+	{
+		_Inv[i] = NULL;
+	}
 }
 
 Character::Character(const Character& obj)
 {
 	_Name = obj._Name;
-	num_equip_materia = obj.num_equip_materia;
+	for (int i = 0; i < 4; i++)
+	{
+		_Inv[i] = obj._Inv[i]->clone();
+	}
 }
 
 Character& Character::operator=(const Character& obj)
@@ -22,7 +32,10 @@ Character& Character::operator=(const Character& obj)
 	if (this != &obj)
 	{
 		_Name = obj._Name;
-		num_equip_materia = obj.num_equip_materia;
+		for (int i = 0; i < 4; i++)
+		{
+			_Inv[i] = obj._Inv[i]->clone();
+		}
 	}
 	return (*this);
 }
@@ -38,25 +51,36 @@ std::string const & Character::getName() const
 
 void Character::equip(AMateria* m)
 {
-	if (num_equip_materia == 4)
+	for (int i = 0; i < 4; i++)
 	{
-		std::cout << "Character cannot equip more than 4 materia" << std::endl;
-		return ;
+		if (_Inv[i] == NULL)
+		{
+			_Inv[i] = m;
+			return ;
+		}
 	}
-	num_equip_materia++;
+	std::cout << "Inventory of " << _Name << " is full. Cannot equip any materia" << std::endl;
 }
 
 void Character::unequip(int idx)
 {
-	if (num_equip_materia == 0)
+	if (idx < 0 || idx > 3)
 	{
-		std::cout << "Character has no materia to unequip" << std::endl;
+		std::cout << "Selected index doesn't exist" << std::endl;
 		return ;
 	}
-	num_equip_materia--;
+	if (_Inv[idx] == NULL)
+	{
+		std::cout << "Selected slot is empty" << std::endl;
+		return ;
+	}
+	_Inv[idx] = NULL;
 }
 
 void Character::use(int idx, ICharacter& target)
 {
-
+	if (idx >= 0 && idx < 4 && _Inv[idx])
+		_Inv[idx]->use(target);
+	else
+		std::cout << "Index either too small, too big, or the field is empty" << std::endl;
 }

@@ -11,7 +11,7 @@ class Character : public ICharacter
 {
 private:
 	std::string _Name;
-	int num_equip_materia;
+	AMateria* _Inv[4];
 
 public:
 	Character();

@@ -5,7 +5,9 @@ CPFLAGS	=	-Wall -Wextra -Werror
 SRC		=	main.cpp \
 			AMateria.cpp \
 			Cure.cpp \
-			Ice.cpp
+			Ice.cpp \
+			Character.cpp \
+			MateriaSource.cpp
 OBJ		=	$(addprefix obj/, $(SRC:%.cpp=%.o))
 
 $(NAME):	$(OBJ)
