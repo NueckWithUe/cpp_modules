@@ -1,6 +1,6 @@
 NAME	=	ex00
 CPP		=	c++
-CPFLAGS	=	-Wall -Wextra -Werror -std=c++98
+CPFLAGS	=	-Wall -Wextra -Werror
 
 SRC		=	main.cpp \
 			newZombie.cpp \

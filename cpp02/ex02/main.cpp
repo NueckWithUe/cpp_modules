@@ -3,8 +3,8 @@
 
 int main(void)
 {
-	std::cout << "Running tests from the subject" << std::endl;
-	Fixed a;
+	std::cout << "Running tests from the subject\n" << std::endl;
+	Fixed a(1);
 	Fixed const b(Fixed(5.05f) * Fixed(2));
 
 	std::cout << a << std::endl;
@@ -17,7 +17,8 @@ int main(void)
 
 	std::cout << Fixed::max(a, b) << std::endl;
 
-	std::cout << "Running own tests" << std::endl;
+	std::cout << std::endl;
+	std::cout << "Running own tests\n" << std::endl;
 
 	Fixed c(2 + 2);
 	Fixed d(c - 1);
@@ -42,5 +43,26 @@ int main(void)
 
 	if (e == 0)
 		std::cout << "e is 0" << std::endl;
+
+	Fixed h(1);
+	Fixed i(42.42f);
+	
+	std::cout << h << std::endl;
+	std::cout << h-- << std::endl;
+	std::cout << h << std::endl;
+	std::cout << i << std::endl;
+	std::cout << i-- << std::endl;
+	std::cout << i << std::endl;
+
+	Fixed j(1);
+	Fixed k(42.42f);
+
+	std::cout << j << std::endl;
+	std::cout << --j << std::endl;
+	std::cout << j << std::endl;
+	std::cout << k << std::endl;
+	std::cout << --k << std::endl;
+	std::cout << k << std::endl;
+
 	return 0;
 }

@@ -30,7 +30,8 @@ Fixed::Fixed(const Fixed &obj)
 
 Fixed& Fixed::operator=(const Fixed &obj)
 {
-	std::cout << "Copy assignment constructor called" << std::endl;
+	if (CONSTRCMSG)
+		std::cout << "Copy assignment constructor called" << std::endl;
 	if (this != &obj)
 		this->FPNvalue = obj.FPNvalue;
 	return *this;
@@ -119,6 +120,19 @@ Fixed Fixed::operator++(int)
 {
 	Fixed value(this->toFloat());
 	++FPNvalue;
+	return (value);
+}
+
+Fixed& Fixed::operator--()
+{
+	--FPNvalue;
+	return (*this);
+}
+
+Fixed Fixed::operator--(int)
+{
+	Fixed value(this->toFloat());
+	--FPNvalue;
 	return (value);
 }
 

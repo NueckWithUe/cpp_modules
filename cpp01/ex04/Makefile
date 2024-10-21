@@ -1,6 +1,6 @@
 NAME	=	ex04
 CPP		=	c++
-CPFLAGS	=	-Wall -Wextra -Werror
+CPFLAGS	=	-Wall -Wextra -Werror -g
 
 SRC		=	main.cpp
 OBJ		=	$(addprefix obj/, $(SRC:%.cpp=%.o))

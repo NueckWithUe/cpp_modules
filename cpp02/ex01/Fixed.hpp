@@ -13,8 +13,8 @@ class Fixed
 
 	public:
 		Fixed();
-		Fixed(const int);
-		Fixed(const float);
+		Fixed(const int number);
+		Fixed(const float number);
 		Fixed(const Fixed &obj);
 		Fixed& operator=(const Fixed& obj);
 		~Fixed();

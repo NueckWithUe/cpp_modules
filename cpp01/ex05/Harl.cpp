@@ -30,17 +30,16 @@ void	Harl::error( void )
 
 void	Harl::complain( std::string level )
 {
-	void (Harl::*functionPointer)(void);
+	void (Harl::*functionPointers[])(void) = {&Harl::info, &Harl::debug, &Harl::warning, &Harl::error};
 
-	if (level == "INFO")
-		functionPointer = &Harl::info;
-	else if (level == "DEBUG")
-		functionPointer = &Harl::debug;
-	else if (level == "WARNING")
-		functionPointer = &Harl::warning;
-	else if (level == "ERROR")
-		functionPointer = &Harl::error;
-	else
-		return ;
-	(this->*functionPointer)();
+	std::string levels[] = {"INFO", "DEBUG", "WARNING", "ERROR"};
+
+	for (int i = 0; i < 4; ++i)
+	{
+		if (level == levels[i])
+		{
+			(this->*functionPointers[i])();
+			return;
+		}
+	}
 }

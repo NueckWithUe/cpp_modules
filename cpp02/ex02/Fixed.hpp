@@ -21,19 +21,27 @@ class Fixed
 		Fixed(const float);
 		Fixed(const Fixed &obj);
 		Fixed& operator=(const Fixed& obj);
+		~Fixed();
+
+
 		bool operator<(const Fixed& obj) const;
 		bool operator<=(const Fixed& obj);
 		bool operator>(const Fixed& obj) const;
 		bool operator>=(const Fixed& obj);
 		bool operator==(const Fixed& obj);
 		bool operator!=(const Fixed& obj);
+
 		Fixed operator+(const Fixed& obj);
 		Fixed operator*(const Fixed& obj);
 		Fixed operator-(const Fixed& obj);
 		Fixed operator/(const Fixed& obj);
+
+
 		Fixed& operator++();
 		Fixed operator++(int);
-		~Fixed();
+		Fixed& operator--();
+		Fixed operator--(int);
+
 
 		int getRawBits( void ) const;
 		void setRawBits( int const raw );

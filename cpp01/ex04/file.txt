@@ -1,0 +1,5 @@
+This is a program that should replace all occurences fo s1 with s2
+
+a aa a aa
+
+aa a
