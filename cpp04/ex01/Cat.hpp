@@ -17,6 +17,9 @@ public:
 	~Cat();
 
 	void makeSound(void) const;
+
+	void haveIdea(std::string idea);
+	void printIdeas();
 };
 
 #endif
