@@ -5,4 +5,7 @@
 
 int main(void)
 {
+	DiamondTrap DT00("DT00");
+
+	DT00.whoAmI();
 }
