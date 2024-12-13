@@ -24,17 +24,18 @@ public:
 
 	void incrementGrade();
 	void decrementGrade();
+
 };
 
-std::ostream& operator<<(std::ostream& os, const Bureaucrat &obj);
+std::ostream& operator<<(std::ostream& os, Bureaucrat &obj);
 
 class BureaucratException : public std::exception
 {
-	private:
-		std::string _Message;
-	public:
-		BureaucratException(const std::string msg);
-		const char* what() const throw();
+private:
+	std::string _Message;
+public:
+	BureaucratException(const std::string msg);
+	const char* what() const throw();
 };
 
 #endif

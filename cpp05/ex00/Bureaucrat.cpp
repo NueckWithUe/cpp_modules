@@ -14,13 +14,11 @@ Bureaucrat::Bureaucrat(std::string name, int grade) : _Name(name)
 {
 	if (grade < 1)
 	{
-		std::cout << "Error: Grade too high" << std::endl;
-		return ;
+		throw BureaucratException("Grade too high");
 	}
 	if (grade > 150)
 	{
-		std::cout << "Error: Grade too low" << std::endl;
-		return ;
+		throw BureaucratException("Grade too low");
 	}
 	_Grade = grade;
 }
@@ -43,12 +41,6 @@ Bureaucrat::~Bureaucrat()
 {
 }
 
-std::ostream& operator<<(std::ostream& os, const Bureaucrat &obj)
-{
-	os << obj;
-	return (os);
-}
-
 std::string Bureaucrat::getName()
 {
 	return (_Name);
@@ -59,12 +51,36 @@ int Bureaucrat::getGrade()
 	return (_Grade);
 }
 
+std::ostream& operator<<(std::ostream& os, Bureaucrat &obj)
+{
+	os << obj.getName() << ", bureaucrat grade " << obj.getGrade();
+	return (os);
+}
+
 void Bureaucrat::incrementGrade()
 {
+	if (_Grade == 1)
+	{
+		throw BureaucratException("Grade too high");
+	}
 	_Grade--;
 }
 
 void Bureaucrat::decrementGrade()
 {
+	if (_Grade == 150)
+	{
+		throw BureaucratException("Grade too low");
+	}
 	_Grade++;
+}
+
+BureaucratException::BureaucratException(const std::string msg) : _Message(msg)
+{
+
+}
+
+const char* BureaucratException::what() const throw()
+{
+	return (_Message.c_str());
 }
