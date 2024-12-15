@@ -5,13 +5,12 @@ Form::Form() : _Name("Unknown Form"), _GradeToSign(1), _GradeToExecute(1)
 	_Signed = false;
 }
 
-Form::Form(std::string name) : _Name(name), _GradeToSign(1), _GradeToExecute(1)
-{
-	_Signed = false;
-}
-
 Form::Form(std::string name, int sign, int exec) : _Name(name), _GradeToSign(sign), _GradeToExecute(exec)
 {
+	if (sign < 1 || exec < 1)
+		throw Form::GradeTooHighException();
+	else if (sign > 150 || exec > 150)
+		throw Form::GradeTooLowException();
 	_Signed = false;
 }
 
@@ -55,7 +54,7 @@ bool Form::getStatus()
 
 std::ostream& operator<<(std::ostream& os, Form &obj)
 {
-	os << "Form " << obj.getName() <<
+	os << obj.getName() <<
 		", signed: " << obj.getStatus() <<
 		", grade to sign: " << obj.getGradeToSign() <<
 		", grade to execute: " << obj.getGradeToExecute();
@@ -64,21 +63,21 @@ std::ostream& operator<<(std::ostream& os, Form &obj)
 
 void Form::beSigned(Bureaucrat bureaucrat)
 {
-	if (bureaucrat.getGrade() <= this->_GradeToSign)
+	if (bureaucrat.getGrade() <= this->getGradeToSign())
 	{
 		this->_Signed = true;
-		bureaucrat.signForm(*this);
+		std::cout << bureaucrat << " signed " << *this << std::endl;
 		return ;
 	}
-	throw FormException("Bureaucrat's grade is too low to sign the form");
+	throw Form::GradeTooLowException();
 }
 
-FormException::FormException(const std::string msg) : _Message(msg)
+const char* Form::GradeTooHighException::what() const throw()
 {
-
+	return ("Grade too high");
 }
 
-const char* FormException::what() const throw()
+const char* Form::GradeTooLowException::what() const throw()
 {
-	return (_Message.c_str());
+	return ("Grade too low");
 }

@@ -17,11 +17,22 @@ private:
 	const int _GradeToExecute;
 public:
 	Form();
-	Form(std::string name);
 	Form(std::string name, int sign, int exec);
 	Form(const Form& obj);
 	Form& operator=(const Form& obj);
 	~Form();
+
+	class GradeTooHighException : std::exception
+	{
+	public:
+		const char* what() const throw();
+	};
+
+	class GradeTooLowException : public std::exception
+	{
+	public:
+		const char* what() const throw();
+	};
 
 	std::string getName();
 	int getGradeToSign();
@@ -32,15 +43,5 @@ public:
 };
 
 std::ostream& operator<<(std::ostream& os, Form &obj);
-
-class FormException : public std::exception
-{
-private:
-	std::string _Message;
-public:
-	FormException(const std::string msg);
-	const char* what() const throw();
-};
-
 
 #endif

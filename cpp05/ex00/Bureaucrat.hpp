@@ -19,6 +19,18 @@ public:
 	Bureaucrat& operator=(const Bureaucrat& obj);
 	~Bureaucrat();
 
+	class GradeTooLowException : public std::exception
+	{
+	public:
+		const char *what() const throw();
+	};
+
+	class GradeTooHighException : public std::exception
+	{
+	public:
+		const char *what() const throw();
+	};
+
 	std::string getName();
 	int getGrade();
 
@@ -28,14 +40,5 @@ public:
 };
 
 std::ostream& operator<<(std::ostream& os, Bureaucrat &obj);
-
-class BureaucratException : public std::exception
-{
-private:
-	std::string _Message;
-public:
-	BureaucratException(const std::string msg);
-	const char* what() const throw();
-};
 
 #endif

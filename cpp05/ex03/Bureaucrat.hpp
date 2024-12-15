@@ -6,9 +6,9 @@
 #include <iostream>
 #include <string>
 
-#include "Form.hpp"
+#include "AForm.hpp"
 
-class Form;
+class AForm;
 
 class Bureaucrat
 {
@@ -34,15 +34,16 @@ public:
 		const char* what() const throw();
 	};
 
-	std::string getName();
-	int getGrade();
+	std::string getName() const;
+	int getGrade() const;
 
 	void incrementGrade();
 	void decrementGrade();
 
-	void signForm(Form &form);
+	void signForm(AForm &form);
+	void executeForm(AForm const & form);
 };
 
-std::ostream& operator<<(std::ostream& os, Bureaucrat &obj);
+std::ostream& operator<<(std::ostream& os, const Bureaucrat &obj);
 
 #endif

@@ -14,7 +14,7 @@ int main(void)
 		Bureaucrat Three("Three", 151);
 		std::cout << Three << "\n" << std::endl;
 	}
-	catch(const BureaucratException& e)
+	catch(const std::exception& e)
 	{
 		std::cerr << "Caught exception: " << e.what() << std::endl;
 	}
@@ -42,7 +42,7 @@ int main(void)
 		Three.incrementGrade();
 		std::cout << "Increment successuful" << std::endl;
 	}
-	catch(const BureaucratException& e)
+	catch(const std::exception& e)
 	{
 		std::cerr << "Caught exception: " << e.what() << std::endl;
 	}
