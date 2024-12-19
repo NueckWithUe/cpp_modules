@@ -5,6 +5,11 @@ RobotomyRequestForm::RobotomyRequestForm(std::string target) : AForm("RobotomyRe
 	_Target = target;
 }
 
+RobotomyRequestForm::RobotomyRequestForm(std::string name, std::string target) : AForm(name, 72, 45)
+{
+	_Target = target;
+}
+
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& obj) : AForm(obj)
 {
 	_Target = obj._Target;
@@ -26,6 +31,7 @@ RobotomyRequestForm::~RobotomyRequestForm()
 void RobotomyRequestForm::executeConcrete() const
 {
 	std::cout << "* Drilling noise *" << std::endl;
+	srand(time(0));
 	int rndm = rand() % 2;
 	if (rndm)
 		std::cout << this->_Target << " has been robotomized successfully" << std::endl;

@@ -5,6 +5,11 @@ ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm("Shrubb
 	_Target = target;
 }
 
+ShrubberyCreationForm::ShrubberyCreationForm(std::string name, std::string target) : AForm(name, 145, 137)
+{
+	_Target = target;
+}
+
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& obj) : AForm(obj)
 {
 	_Target = obj._Target;

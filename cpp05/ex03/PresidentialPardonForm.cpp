@@ -5,6 +5,11 @@ PresidentialPardonForm::PresidentialPardonForm(std::string target) : AForm("Pres
 	_Target = target;
 }
 
+PresidentialPardonForm::PresidentialPardonForm(std::string name, std::string target) : AForm(name, 25, 5)
+{
+	_Target = target;
+}
+
 PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& obj) : AForm(obj)
 {
 	_Target = obj._Target;
