@@ -14,17 +14,26 @@ static void convertToChar(std::string arg)
 static void convertToDouble(std::string arg)
 {
 	double res;
+	int precision;
 
+	precision = arg.find_last_not_of('0', arg.length());
+	std::cout << "precision: " << precision << std::endl;
 	res = static_cast<double>(std::atof(arg.c_str()));
-	std::cout << std::fixed << "double: " << res << std::endl;
+	std::cout << std::fixed << std::setprecision(precision) << "double: " << res << std::endl;
 }
 
 static void convertToFloat(std::string arg)
 {
 	float res;
+	int precision;
 
+	precision = arg.find_last_not_of('0', arg.length());
+	if (precision == 2)
+		precision--;
+	if (precision > 2)
+		precision -= 2;
 	res = static_cast<float>(std::atof(arg.c_str()));
-	std::cout << std::fixed << "float: " << res << "f" << std::endl;
+	std::cout << std::fixed << std::setprecision(precision) << "float: " << res << "f" << std::endl;
 }
 
 static void convertToInt(std::string arg)

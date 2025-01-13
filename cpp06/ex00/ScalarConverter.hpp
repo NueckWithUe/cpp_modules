@@ -3,6 +3,7 @@
 # define SCALARCONVERTER_HPP
 
 #include <iostream>
+#include <iomanip>
 #include <string>
 #include <limits>
 #include <cmath>
