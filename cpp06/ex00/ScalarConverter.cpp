@@ -21,7 +21,6 @@ static void convertToChar(std::string arg)
 static void convertToDouble(std::string arg)
 {
 	double res;
-	int precision, point;
 
 	try
 	{
@@ -37,22 +36,12 @@ static void convertToDouble(std::string arg)
 		std::cout << "double: " << arg << std::endl;
 		return ;
 	}
-	if (arg.find(".", 0) == arg.npos)
-		precision = 1;
-	else
-	{
-		point = arg.find(".", 0);
-		precision = arg.find_last_not_of('0', arg.length()) - point;
-	}
-	if (precision == 0)
-		precision = 1;
-	std::cout << std::fixed << std::setprecision(precision) << "double: " << res << std::endl;
+	std::cout << std::fixed << std::setprecision(1) << "double: " << res << std::endl;
 }
 
 static void convertToFloat(std::string arg)
 {
 	float res;
-	int precision, point;
 
 	try
 	{
@@ -68,16 +57,7 @@ static void convertToFloat(std::string arg)
 		std::cout << "float: " << arg << "f" << std::endl;
 		return ;
 	}
-	if (arg.find(".", 0) == arg.npos)
-		precision = 1;
-	else
-	{
-		point = arg.find(".", 0);
-		precision = arg.find_last_not_of('0', arg.length()) - point;
-	}
-	if (precision == 0)
-		precision = 1;
-	std::cout << std::fixed << std::setprecision(precision) << "float: " << res << "f" << std::endl;
+	std::cout << std::fixed << std::setprecision(1) << "float: " << res << "f" << std::endl;
 }
 
 static void convertToInt(std::string arg)
