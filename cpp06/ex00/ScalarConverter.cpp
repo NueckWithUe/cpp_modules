@@ -23,6 +23,15 @@ static void convertToDouble(std::string arg)
 	double res;
 	int precision, point;
 
+	try
+	{
+		res = static_cast<double>(std::stod(arg));
+	}
+	catch(const std::exception& e)
+	{
+		std::cout << "double: impossible" << std::endl;
+		return ;
+	}
 	if (arg == "-inf" || arg == "+inf" || arg == "nan")
 	{
 		std::cout << "double: " << arg << std::endl;
@@ -35,10 +44,8 @@ static void convertToDouble(std::string arg)
 		point = arg.find(".", 0);
 		precision = arg.find_last_not_of('0', arg.length()) - point;
 	}
-	std::cout << precision << std::endl;
 	if (precision == 0)
 		precision = 1;
-	res = static_cast<double>(std::stof(arg));
 	std::cout << std::fixed << std::setprecision(precision) << "double: " << res << std::endl;
 }
 
@@ -47,16 +54,29 @@ static void convertToFloat(std::string arg)
 	float res;
 	int precision, point;
 
+	try
+	{
+		res = static_cast<float>(std::stof(arg));
+	}
+	catch(const std::exception& e)
+	{
+		std::cout << "float: impossible" << std::endl;
+		return ;
+	}
 	if (arg == "-inf" || arg == "+inf" || arg == "nan")
 	{
 		std::cout << "float: " << arg << "f" << std::endl;
 		return ;
 	}
-	point = arg.find(".", 0);
-	precision = arg.find_last_not_of('0', arg.length()) - point;
+	if (arg.find(".", 0) == arg.npos)
+		precision = 1;
+	else
+	{
+		point = arg.find(".", 0);
+		precision = arg.find_last_not_of('0', arg.length()) - point;
+	}
 	if (precision == 0)
 		precision = 1;
-	res = static_cast<float>(std::stof(arg));
 	std::cout << std::fixed << std::setprecision(precision) << "float: " << res << "f" << std::endl;
 }
 
