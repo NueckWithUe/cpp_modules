@@ -4,35 +4,59 @@ static void convertToChar(std::string arg)
 {
 	char res;
 
-	res = static_cast<char>(std::atoi(arg.c_str()));
-	if (res < ' ' || res > 126)
-		std::cout << "char: Non displayable" << std::endl;
-	else
-		std::cout << "char: '" << res << "'" << std::endl;
+	try
+	{
+		res = static_cast<char>(std::stoi(arg));
+		if (!std::isprint(res))
+			std::cout << "char: not displayable" << std::endl;
+		else
+			std::cout << "char: '" << res << "'" << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cout << "char: impossible" << std::endl;
+	}
 }
 
 static void convertToDouble(std::string arg)
 {
 	double res;
-	int precision;
+	int precision, point;
 
-	precision = arg.find_last_not_of('0', arg.length());
-	std::cout << "precision: " << precision << std::endl;
-	res = static_cast<double>(std::atof(arg.c_str()));
+	if (arg == "-inf" || arg == "+inf" || arg == "nan")
+	{
+		std::cout << "double: " << arg << std::endl;
+		return ;
+	}
+	if (arg.find(".", 0) == arg.npos)
+		precision = 1;
+	else
+	{
+		point = arg.find(".", 0);
+		precision = arg.find_last_not_of('0', arg.length()) - point;
+	}
+	std::cout << precision << std::endl;
+	if (precision == 0)
+		precision = 1;
+	res = static_cast<double>(std::stof(arg));
 	std::cout << std::fixed << std::setprecision(precision) << "double: " << res << std::endl;
 }
 
 static void convertToFloat(std::string arg)
 {
 	float res;
-	int precision;
+	int precision, point;
 
-	precision = arg.find_last_not_of('0', arg.length());
-	if (precision == 2)
-		precision--;
-	if (precision > 2)
-		precision -= 2;
-	res = static_cast<float>(std::atof(arg.c_str()));
+	if (arg == "-inf" || arg == "+inf" || arg == "nan")
+	{
+		std::cout << "float: " << arg << "f" << std::endl;
+		return ;
+	}
+	point = arg.find(".", 0);
+	precision = arg.find_last_not_of('0', arg.length()) - point;
+	if (precision == 0)
+		precision = 1;
+	res = static_cast<float>(std::stof(arg));
 	std::cout << std::fixed << std::setprecision(precision) << "float: " << res << "f" << std::endl;
 }
 
@@ -40,14 +64,14 @@ static void convertToInt(std::string arg)
 {
 	int res;
 
-	res = static_cast<int>(std::atoi(arg.c_str()));
-	if (res >= INT32_MAX || res <= INT32_MIN)
+	try
+	{
+		res = static_cast<int>(std::stoi(arg));
+		std::cout << "int: " << res << std::endl;
+	}
+	catch(const std::exception& e)
 	{
 		std::cout << "int: impossible" << std::endl;
-	}
-	else
-	{
-		std::cout << "int: " << res << std::endl;
 	}
 }
 

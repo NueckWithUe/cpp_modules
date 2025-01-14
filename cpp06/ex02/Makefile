@@ -10,14 +10,14 @@ SRC		=	main.cpp \
 
 OBJ		=	$(addprefix obj/, $(SRC:%.cpp=%.o))
 
-$(NAME):	$(OBJ)
-			$(CPP) $(CPFLAGS) $(OBJ) -o $(NAME)
-
 obj/%.o:	%.cpp
 			@mkdir -p obj/
 			$(CPP) $(CPFLAGS) -c $< -o $@
 
 all:		$(NAME)
+
+$(NAME):	$(OBJ)
+			$(CPP) $(CPFLAGS) $(OBJ) -o $(NAME)
 
 clean:
 			rm -rf obj/
