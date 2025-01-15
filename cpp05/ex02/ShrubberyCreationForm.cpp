@@ -25,6 +25,15 @@ void ShrubberyCreationForm::executeConcrete() const
 	std::string name = _Target;
 	name = name.append("_shrubbery");
 	std::ofstream file(name);
-	file << "  /\\\n" << " /  \\\n" << "/____\\\n" << "  ||\n" << "  ||" << std::endl;
+	file <<	"  /\\\n" <<
+			" /  \\\n" <<
+			"/____\\\n" <<
+			"  ||\n" <<
+			"  ||\n\n" <<
+			"  /\\\n" <<
+			" /  \\\n" <<
+			"/____\\\n" <<
+			"  ||\n" <<
+			"  ||" << std::endl;
 	file.close();
 }
